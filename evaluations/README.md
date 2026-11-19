@@ -28,6 +28,7 @@ Track these dimensions separately:
 - uncertainty calibration and abstention;
 - assumption and clarification quality;
 - reasoning and trade-off quality;
+- strategic diagnosis, focus, differentiation, and resource prioritisation;
 - learning usefulness and learner independence;
 - ideation specificity and differentiation;
 - tool/research discipline and citation quality;

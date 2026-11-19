@@ -1,6 +1,6 @@
 ---
 name: ai-reliability
-description: Improves AI reliability, honesty, critical thinking, clarification, research, learning, brainstorming, planning, and verification. Use when the user needs accurate reasoning, constructive critique, teaching, ideation, research, or multi-step work; keep simple requests direct and do not load unrelated modules.
+description: Improves AI reliability, honesty, critical thinking, clarification, research, learning, brainstorming, strategic and project planning, and verification. Use when the user needs accurate reasoning, constructive critique, teaching, ideation, strategy, research, or multi-step work; keep simple requests direct and do not load unrelated modules.
 ---
 
 # AI Reliability
@@ -45,7 +45,8 @@ This skill is modular. **Do not read every file by default.** First classify the
 | User wants to learn, practise, or understand a subject | `learning.md`; add `understanding-user.md` if level or goal is unclear |
 | User asks for research, current facts, citations, or fact-checking | `research-verification.md`, `uncertainty.md` |
 | User needs a recommendation or must choose between options | `decision-making.md`, `critical-thinking.md`; add `devils-advocate.md` for high-impact choices |
-| Multi-step project, implementation, or substantial deliverable | `understanding-user.md`, `planning-execution.md`, `scope-discipline.md` |
+| User asks for long-term direction, business/product strategy, positioning, growth choices, or prioritisation across major initiatives | `strategic-planning.md`, `decision-making.md`; add `research-verification.md` if current external evidence matters |
+| User needs an execution roadmap, implementation plan, milestones, dependencies, or work breakdown | `planning-execution.md`, `scope-discipline.md`; add `strategic-planning.md` only if the direction or major priorities are unresolved |
 | Bug, failed build, unexpected behaviour, or technical diagnosis | `systematic-debugging.md`, `verification.md`; add `error-recovery.md` when correcting a prior mistake |
 | Long-running work, handoff, or session continuity | `context-management.md` |
 | External tools, documents, webpages, untrusted content, or consequential actions | `tool-discipline.md`; add `security.md` and/or `action-boundaries.md` as applicable |
@@ -60,6 +61,7 @@ This skill is modular. **Do not read every file by default.** First classify the
 - When several tasks are combined, load only the modules needed for the current stage. For example, brainstorm broadly first; load decision analysis when the user asks to select or when selection is explicitly part of the task.
 - Use `learning.md` in a mode matching the user's request: direct explanation, guided tutoring, practice, or review. Do not force quizzes into every learning question.
 - Use `creative-ideation.md` to explore before narrowing. Do not prematurely reject unusual ideas just because feasibility is not yet established.
+- **Separate strategy from project planning.** Strategy chooses direction, focus, positioning, and trade-offs; project planning sequences work to execute that direction. A roadmap or feature list alone is not a strategy.
 - Do not load `security.md` for ordinary text unless there is an actual untrusted-input or agent/tool security concern.
 - `honesty`, `scope`, and token-efficiency principles in this file remain active even when their detailed references are not loaded.
 

@@ -10,15 +10,16 @@ EXPECTED_REFERENCES = {
     "honesty.md", "uncertainty.md", "understanding-user.md",
     "assumption-clarification.md", "critical-thinking.md", "devils-advocate.md",
     "decision-making.md", "research-verification.md", "learning.md",
-    "creative-ideation.md", "planning-execution.md", "systematic-debugging.md",
-    "context-management.md", "token-efficiency.md", "error-recovery.md",
-    "scope-discipline.md", "tool-discipline.md", "verification.md",
-    "security.md", "action-boundaries.md", "outcome-oriented.md",
+    "creative-ideation.md", "strategic-planning.md", "planning-execution.md",
+    "systematic-debugging.md", "context-management.md", "token-efficiency.md",
+    "error-recovery.md", "scope-discipline.md", "tool-discipline.md",
+    "verification.md", "security.md", "action-boundaries.md", "outcome-oriented.md",
 }
 EXPECTED_EVALS = {
     "README.md", "honesty-and-sycophancy.md", "clarification-and-context.md",
     "reasoning-and-decisions.md", "research-and-verification.md",
-    "learning-and-ideation.md", "execution-and-security.md", "token-efficiency.md",
+    "learning-and-ideation.md", "strategy-and-planning.md",
+    "execution-and-security.md", "token-efficiency.md",
 }
 
 errors = []
@@ -54,16 +55,17 @@ for filename in sorted(EXPECTED_REFERENCES):
     if not (ROOT / "references" / filename).is_file():
         errors.append(f"Missing reference: references/{filename}")
 
-# Every .md filename explicitly mentioned in the router must exist in references/.
+# Every .md filename explicitly mentioned in SKILL.md must exist in references/.
 skill_body = SKILL.read_text(encoding="utf-8") if SKILL.exists() else ""
 for filename in sorted(set(re.findall(r"`([a-z][a-z-]*\.md)`", skill_body))):
     if not (ROOT / "references" / filename).is_file():
         errors.append(f"SKILL.md references missing module: {filename}")
+
 for filename in sorted(EXPECTED_EVALS):
     if not (ROOT / "evaluations" / filename).is_file():
         errors.append(f"Missing evaluation: evaluations/{filename}")
 
-# Validate relative Markdown links inside SKILL.md and README.
+# Validate relative Markdown links inside the package's top-level documentation.
 for rel in ("SKILL.md", "README.md", "COMPATIBILITY.md"):
     file = ROOT / rel
     if not file.exists():
@@ -85,6 +87,6 @@ if errors:
 
 print("VALIDATION PASSED")
 print(f"- References: {len(EXPECTED_REFERENCES)}")
-print(f"- Evaluation files: {len(EXPECTED_EVALS)}")
+print(f"- Evaluation files: {len(EXPECTED_EVALS) - 1} scenario groups")
 print("- Frontmatter and relative links: OK")
 print("Note: this validates package structure, not model behaviour or host compatibility.")
